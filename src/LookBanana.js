@@ -6,7 +6,9 @@ function LookBanana() {
         <div>
         <h1>LookBanana</h1>
         <p>Look at this banana!</p>
-        <img src="./lookbananalogo.png" alt="Banana" />
+        
+        <img src={process.env.PUBLIC_URL + "/lookbananalogo.png"} alt="Banana" />
+
         <p>This is very first beginning!</p>
         </div>
     );
