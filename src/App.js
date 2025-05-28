@@ -1,21 +1,22 @@
-
 import React from 'react';
-import{ BrowserRouter,Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage.js';
-import ProductPage from './pages/ProductPage.js';
-import AboutPage from './pages/AboutPage.jsx';
-
+import './App.css';
+import { BrowserRouter,Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
 
 function App() {
-  return (
-    
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/product" element={<ProductPage />} />
-        <Route path="/about" element={<AboutPage />} />
-      </Routes>
+    return (
+      <BrowserRouter>
 
-  );
-}
+      <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<div>About Page</div>} />
+    
+      </Routes>
+      
+      </BrowserRouter>
+      
+    );
+  }
 
 export default App;
