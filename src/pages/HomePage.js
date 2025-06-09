@@ -19,6 +19,10 @@ import React, { useState, useEffect } from 'react';
 import './HomePage.css';
 
 const HomePage = () => {
+
+  const isMenuOpen = true;
+   // Placeholder for menu state, can be managed with state if needed 
+
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -26,10 +30,10 @@ const HomePage = () => {
   const sampleProducts = [
     {
       id: 1,
-      name: "Wireless Bluetooth Headphones",
+      name: "DISNEY PREMIUM THREE MONTHSS",
       price: 89.99,
       originalPrice: 129.99,
-      image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop",
+      image: "https://images.unsplash.com/photo-1534450539339-6d1c81ad18e2?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZGlzbmV5fGVufDB8fDB8fHww",
       rating: 4.5,
       category: "Electronics",
       inStock: true,
