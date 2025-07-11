@@ -3,9 +3,9 @@ import './Footer.css';
 
 const Footer = () => {
     return(
-        <footer className="footter">
+        <footer className="footer">
             <p className="footer-text">
-            ©{new Date().getFullYear()} LookBanana. All rights reserved.
+                ©{new Date().getFullYear()} LookBanana. All rights reserved.
             </p>
         </footer>
     );

@@ -1,0 +1,117 @@
+.product-page {
+  min-height: 100vh;
+  background: var(--color-bg-alt);
+  padding: 40px 0 60px 0;
+}
+
+.product-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 32px;
+  letter-spacing: 1px;
+}
+
+.product-loading,
+.product-error {
+  text-align: center;
+  font-size: 1.1rem;
+  margin: 24px 0;
+  color: #e53935;
+}
+
+.product-loading {
+  color: var(--color-primary);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+.product-card {
+  background: var(--color-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 18px 18px 18px;
+  transition: box-shadow 0.18s, transform 0.18s, border 0.18s;
+  position: relative;
+}
+
+.product-card:hover {
+  box-shadow: 0 8px 32px rgba(191, 169, 128, 0.16);
+  border: 1.5px solid var(--color-primary);
+  transform: translateY(-4px) scale(1.02);
+}
+
+.product-img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  background: var(--color-bg-alt);
+  box-shadow: none;
+  border: 1px solid var(--color-border);
+}
+
+.product-info {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.product-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.product-price {
+  font-size: 1rem;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.product-add-btn {
+  background: var(--color-primary);
+  color: var(--color-bg);
+  border: none;
+  border-radius: var(--radius);
+  padding: 10px 0;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.18s, box-shadow 0.18s;
+  box-shadow: var(--shadow);
+}
+
+.product-add-btn:hover, .product-add-btn:focus {
+  background: var(--color-accent);
+  color: var(--color-text);
+  outline: none;
+}
+
+@media (max-width: 600px) {
+  .product-title {
+    font-size: 1.4rem;
+  }
+  .product-card {
+    padding: 14px 6px 12px 6px;
+  }
+  .product-img {
+    width: 80px;
+    height: 80px;
+  }
+} 

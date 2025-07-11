@@ -1,22 +1,6 @@
-/**
- * 
- * import React from 'react';
-
-const HomaPage = () => {
-    return(
-        <div>
-            <h1> Welcome to Our Store!</h1>
-            <div className="text-3xl text-red-600">Home Page Loaded</div>
-
-        </div>
-        
-    );
-};
-
-export default HomaPage;
-*/
 import React, { useState, useEffect } from 'react';
 import './HomePage.css';
+import { GiWhiteBook } from 'react-icons/gi'
 
 const HomePage = () => {
 
@@ -26,11 +10,13 @@ const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  //document.body.style.backgroundColor = "#fff";
+
   // Sample product data
   const sampleProducts = [
     {
       id: 1,
-      name: "DISNEY PREMIUM THREE MONTHSS",
+      name: "DISNEY PREMIUM THREE MONTHS SUBSCRIPTION",
       price: 89.99,
       originalPrice: 129.99,
       image: "https://images.unsplash.com/photo-1534450539339-6d1c81ad18e2?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZGlzbmV5fGVufDB8fDB8fHww",
