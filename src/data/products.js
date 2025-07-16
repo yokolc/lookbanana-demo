@@ -1,94 +1,106 @@
 const products = [
-    {
-      id: 1,
-      name: "Premium Wireless Headphones",
-      price: 249.99,
-      description: "Experience crystal-clear audio with our premium wireless headphones. Featuring 40-hour battery life, active noise cancellation, and premium comfort.",
-      image: "/api/placeholder/400/400",
-      category: "electronics",
-      rating: 4.7,
-      reviews: 128,
-      stock: 15
-    },
-    {
-      id: 2,
-      name: "Smartwatch Pro",
-      price: 199.99,
-      description: "Track your fitness goals, receive notifications, and more with this advanced smartwatch. Includes heart rate monitoring, sleep tracking, and 5-day battery life.",
-      image: "/api/placeholder/400/400",
-      category: "electronics",
-      rating: 4.5,
-      reviews: 95,
-      stock: 20
-    },
-    {
-      id: 3,
-      name: "Ultra HD 4K Monitor",
-      price: 349.99,
-      description: "Enhance your viewing experience with this 27-inch 4K monitor. Features HDR support, wide color gamut, and adjustable stand.",
-      image: "/api/placeholder/400/400",
-      category: "electronics",
-      rating: 4.8,
-      reviews: 74,
-      stock: 8
-    },
-    {
-      id: 4,
-      name: "Ergonomic Office Chair",
-      price: 199.99,
-      description: "Work in comfort with this ergonomic office chair. Adjustable height, lumbar support, and breathable mesh back provide all-day comfort.",
-      image: "/api/placeholder/400/400",
-      category: "furniture",
-      rating: 4.6,
-      reviews: 65,
-      stock: 12
-    },
-    {
-      id: 5,
-      name: "Professional Digital Camera",
-      price: 799.99,
-      description: "Capture stunning photos with this 24.2MP digital camera. Includes 4K video recording, built-in Wi-Fi, and a versatile lens kit.",
-      image: "/api/placeholder/400/400",
-      category: "electronics",
-      rating: 4.9,
-      reviews: 42,
-      stock: 5
-    },
-    {
-      id: 6,
-      name: "Leather Messenger Bag",
-      price: 129.99,
-      description: "A stylish and durable leather messenger bag perfect for work or casual use. Features multiple compartments and adjustable strap.",
-      image: "/api/placeholder/400/400",
-      category: "fashion",
-      rating: 4.4,
-      reviews: 57,
-      stock: 18
-    },
-    {
-      id: 7,
-      name: "Smart Home Security System",
-      price: 299.99,
-      description: "Keep your home safe with this comprehensive security system. Includes cameras, motion sensors, and smartphone alerts.",
-      image: "/api/placeholder/400/400",
-      category: "electronics",
-      rating: 4.6,
-      reviews: 38,
-      stock: 10
-    },
-    {
-      id: 8,
-      name: "Stainless Steel Cookware Set",
-      price: 149.99,
-      description: "A complete cookware set for the home chef. Includes pots, pans, and utensils made from high-quality stainless steel.",
-      image: "/api/placeholder/400/400",
-      category: "home",
-      rating: 4.7,
-      reviews: 83,
-      stock: 14
-    }
-  ];
-  
-  export default products;
+  {
+    id: 1,
+    name: "Product1",
+    price: 89.99,
+    salePrice: null,
+    image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=500&fit=crop",
+    isSoldOut: false,
+    isOnSale: false,
+    sales: 45,
+    date: "2024-01-15",
+    category: "DISNEY",
+    description: "A beautifully crafted product with elegant details and comfortable fit.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    details: [
+      "100% Cotton",
+      "Made in Italy",
+      "Machine washable",
+      "Relaxed fit"
+    ]
+  },
+  {
+    id: 2,
+    name: "Product2",
+    price: 125.50,
+    salePrice: 99.99,
+    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=500&fit=crop",
+    isSoldOut: false,
+    isOnSale: true,
+    sales: 32,
+    date: "2024-01-20",
+    category: "NETFLIX",
+    description: "A sophisticated product with a classic design and premium quality.",
+    sizes: ["S", "M", "L"],
+    details: [
+      "100% Merino wool",
+      "Made in France",
+      "Dry clean only",
+      "Classic fit"
+    ]
+  },
+  {
+    id: 3,
+    name: "Product3",
+    price: 248.00,
+    salePrice: null,
+    image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&h=500&fit=crop",
+    isSoldOut: true,
+    isOnSale: false,
+    sales: 28,
+    date: "2024-01-10",
+    category: "YOUTUBE",
+    description: "A versatile product perfect for everyday use and special occasions.",
+    sizes: ["XS", "S", "M", "L"],
+    details: [
+      "100% Linen",
+      "Made in Portugal",
+      "Hand wash cold",
+      "Oversized fit"
+    ]
+  },
+  {
+    id: 4,
+    name: "Product4",
+    price: 198.00,
+    salePrice: 159.99,
+    image: "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=400&h=500&fit=crop",
+    isSoldOut: false,
+    isOnSale: true,
+    sales: 67,
+    date: "2024-01-05",
+    category: "DISNEY",
+    description: "A stunning product with sophisticated styling and modern design.",
+    sizes: ["S", "M", "L"],
+    details: [
+      "Silk blend",
+      "Made in France",
+      "Dry clean only",
+      "Fitted silhouette"
+    ]
+  },
+  {
+    id: 5,
+    name: "Product5",
+    price: 268.00,
+    salePrice: null,
+    image: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&h=500&fit=crop",
+    isSoldOut: false,
+    isOnSale: false,
+    sales: 23,
+    date: "2024-01-25",
+    category: "NETFLIX",
+    description: "Classic product in a beautiful color with timeless appeal.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    details: [
+      "100% Cotton twill",
+      "Made in France",
+      "Machine washable",
+      "Straight leg fit"
+    ]
+  }
+];
+
+export default products;
   
   

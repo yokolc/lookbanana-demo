@@ -1,127 +1,23 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './HomePage.css';
-import { GiWhiteBook } from 'react-icons/gi'
+import products from '../data/products';
+import CategoryTabsShowcase from '../components/CategoryTabsShowcase';
 
 const HomePage = () => {
-
-  const isMenuOpen = true;
-   // Placeholder for menu state, can be managed with state if needed 
-
-  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  //document.body.style.backgroundColor = "#fff";
-
-  // Sample product data
-  const sampleProducts = [
-    {
-      id: 1,
-      name: "DISNEY PREMIUM THREE MONTHS SUBSCRIPTION",
-      price: 89.99,
-      originalPrice: 129.99,
-      image: "https://images.unsplash.com/photo-1534450539339-6d1c81ad18e2?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZGlzbmV5fGVufDB8fDB8fHww",
-      rating: 4.5,
-      category: "Electronics",
-      inStock: true,
-      discount: "31% OFF"
-    },
-    {
-      id: 2,
-      name: "Premium Coffee Beans - 1kg",
-      price: 24.99,
-      originalPrice: 34.99,
-      image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=300&h=300&fit=crop",
-      rating: 4.8,
-      category: "Food & Beverage",
-      inStock: true,
-      discount: "29% OFF"
-    },
-    {
-      id: 3,
-      name: "Ergonomic Office Chair",
-      price: 199.99,
-      originalPrice: 299.99,
-      image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=300&fit=crop",
-      rating: 4.3,
-      category: "Furniture",
-      inStock: true,
-      discount: "33% OFF"
-    },
-    {
-      id: 4,
-      name: "Smartphone Case - Clear Design",
-      price: 15.99,
-      originalPrice: 25.99,
-      image: "https://images.unsplash.com/photo-1601593346740-925612772716?w=300&h=300&fit=crop",
-      rating: 4.2,
-      category: "Accessories",
-      inStock: false,
-      discount: "38% OFF"
-    },
-    {
-      id: 5,
-      name: "Organic Cotton T-Shirt",
-      price: 29.99,
-      originalPrice: 45.99,
-      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300&h=300&fit=crop",
-      rating: 4.6,
-      category: "Clothing",
-      inStock: true,
-      discount: "35% OFF"
-    }
-  ];
+  const [email, setEmail] = useState('');
 
   useEffect(() => {
-    // Simulate API call
-    const fetchProducts = async () => {
-      try {
-        setLoading(true);
-        // Simulate network delay
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        setProducts(sampleProducts);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
+    setTimeout(() => {
+      setLoading(false);
+    }, 800);
   }, []);
 
-  const handleAddToCart = (product) => {
-    if (!product.inStock) {
-      alert('Sorry, this product is out of stock!');
-      return;
-    }
-    // Add to cart logic here
-    alert(`${product.name} added to cart!`);
-  };
-
-  const handleViewProduct = (productId) => {
-    // Navigate to product detail page
-    console.log(`Viewing product ${productId}`);
-  };
-
-  const renderStars = (rating) => {
-    const stars = [];
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 !== 0;
-
-    for (let i = 0; i < fullStars; i++) {
-      stars.push(<span key={i} className="star filled">★</span>);
-    }
-
-    if (hasHalfStar) {
-      stars.push(<span key="half" className="star half">★</span>);
-    }
-
-    const emptyStars = 5 - Math.ceil(rating);
-    for (let i = 0; i < emptyStars; i++) {
-      stars.push(<span key={`empty-${i}`} className="star empty">★</span>);
-    }
-
-    return stars;
+  const handleNewsletterSubmit = (e) => {
+    e.preventDefault();
+    alert('Thank you for subscribing to our newsletter!');
+    setEmail('');
   };
 
   if (loading) {
@@ -129,7 +25,7 @@ const HomePage = () => {
       <div className="homepage">
         <div className="loading-container">
           <div className="loading-spinner"></div>
-          <p>Loading amazing products...</p>
+          <p>Loading our collection...</p>
         </div>
       </div>
     );
@@ -137,93 +33,68 @@ const HomePage = () => {
 
   return (
     <div className="homepage">
-      {/* Header Section */}
-      <header className="hero-section">
+      {/* Hero Section */}
+      <section className="hero-section">
         <div className="hero-content">
-          <h1 className="brand-title">🍌 LookBanana</h1>
-          <p className="hero-subtitle">Discover Amazing Products at Unbeatable Prices</p>
-          <button className="cta-button">Shop Now</button>
-        </div>
-        <div className="hero-stats">
-          <div className="stat">
-            <span className="stat-number">10K+</span>
-            <span className="stat-label">Happy Customers</span>
-          </div>
-          <div className="stat">
-            <span className="stat-number">500+</span>
-            <span className="stat-label">Products</span>
-          </div>
-          <div className="stat">
-            <span className="stat-number">24/7</span>
-            <span className="stat-label">Support</span>
+          <h1 className="hero-title">LookBanana</h1>
+          <p className="hero-subtitle">
+            Curated collection of premium products, crafted with attention to detail
+          </p>
+          <div className="hero-buttons">
+            <Link to="/products" className="btn-primary">
+              Explore Collection
+            </Link>
+            <Link to="/about" className="btn-secondary">
+              Our Story
+            </Link>
           </div>
         </div>
-      </header>
+        <div className="hero-image">
+          <img 
+            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop" 
+            alt="Featured Collection"
+            onError={(e) => {
+              e.target.style.display = 'none';
+            }}
+          />
+        </div>
+      </section>
 
-      {/* Featured Products Section */}
-      <section className="featured-products">
+      {/* Newsletter Banner */}
+      <section className="newsletter-banner">
         <div className="container">
-          <h2 className="section-title">Featured Products</h2>
-          <p className="section-subtitle">Hand-picked items just for you</p>
-          
-          <div className="products-grid">
-            {products.map(product => (
-              <div key={product.id} className="product-card">
-                <div className="product-image-container">
-                  <img 
-                    src={product.image} 
-                    alt={product.name}
-                    className="product-image"
-                    onError={(e) => {
-                      e.target.src = 'https://via.placeholder.com/300x300?text=Product+Image';
-                    }}
-                  />
-                  {product.discount && (
-                    <span className="discount-badge">{product.discount}</span>
-                  )}
-                  {!product.inStock && (
-                    <div className="out-of-stock-overlay">
-                      <span>Out of Stock</span>
-                    </div>
-                  )}
-                </div>
-                
-                <div className="product-info">
-                  <span className="product-category">{product.category}</span>
-                  <h3 className="product-name">{product.name}</h3>
-                  
-                  <div className="product-rating">
-                    <div className="stars">
-                      {renderStars(product.rating)}
-                    </div>
-                    <span className="rating-value">({product.rating})</span>
-                  </div>
-                  
-                  <div className="product-pricing">
-                    <span className="current-price">${product.price}</span>
-                    {product.originalPrice && (
-                      <span className="original-price">${product.originalPrice}</span>
-                    )}
-                  </div>
-                  
-                  <div className="product-actions">
-                    <button 
-                      className="btn-primary"
-                      onClick={() => handleAddToCart(product)}
-                      disabled={!product.inStock}
-                    >
-                      {product.inStock ? 'Add to Cart' : 'Out of Stock'}
-                    </button>
-                    <button 
-                      className="btn-secondary"
-                      onClick={() => handleViewProduct(product.id)}
-                    >
-                      View Details
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="newsletter-content">
+            <span className="newsletter-text">
+              Free shipping on orders over $200 — Subscribe to our newsletter and receive 10% off your first order
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* Category Tabs Showcase */}
+      <div className="container">
+        <CategoryTabsShowcase products={products} />
+      </div>
+
+      {/* Newsletter Section */}
+      <section className="newsletter-section">
+        <div className="container">
+          <div className="newsletter-form-container">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our newsletter for exclusive offers and new arrivals</p>
+            <form onSubmit={handleNewsletterSubmit} className="newsletter-form">
+              <input
+                type="email"
+                placeholder="Enter your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="newsletter-input"
+              />
+              <button type="submit" className="newsletter-btn">
+                Subscribe
+              </button>
+            </form>
           </div>
         </div>
       </section>
@@ -231,12 +102,11 @@ const HomePage = () => {
       {/* Features Section */}
       <section className="features-section">
         <div className="container">
-          <h2 className="section-title">Why Choose LookBanana?</h2>
           <div className="features-grid">
             <div className="feature-item">
               <div className="feature-icon">🚚</div>
               <h3>Free Shipping</h3>
-              <p>Free shipping on orders over $50</p>
+              <p>Free shipping on orders over $200</p>
             </div>
             <div className="feature-item">
               <div className="feature-icon">🔒</div>
@@ -251,7 +121,7 @@ const HomePage = () => {
             <div className="feature-item">
               <div className="feature-icon">💬</div>
               <h3>24/7 Support</h3>
-              <p>Round-the-clock customer service</p>
+              <p>Round-the-clock customer support</p>
             </div>
           </div>
         </div>

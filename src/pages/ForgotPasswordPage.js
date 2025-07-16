@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -36,7 +35,7 @@ const styles = {
     width: '100%',
   },
   label: {
-    flex: '0 0 130px',
+    flex: '0 0 110px',
     marginRight: 10,
     fontWeight: 500,
     color: 'var(--color-text)',
@@ -71,12 +70,12 @@ const styles = {
     transition: 'background 0.2s, opacity 0.2s',
     boxShadow: 'var(--shadow)',
   },
-  error: {
-    color: '#e53935',
-    background: '#fff6f6',
+  success: {
+    color: '#388e3c',
+    background: '#e8f5e9',
     borderRadius: 4,
     padding: '8px 0',
-    marginBottom: 12,
+    marginBottom: 16,
     width: '100%',
     textAlign: 'center',
     fontWeight: 500,
@@ -92,38 +91,25 @@ const styles = {
   },
 };
 
-const RegisterPage = () => {
+const ForgotPasswordPage = () => {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!email || !password || !confirmPassword) {
-      setError('Please fill in all fields.');
-      return;
-    }
-    if (password !== confirmPassword) {
-      setError('Passwords do not match.');
-      return;
-    }
-    setError('');
     setSubmitted(true);
   };
 
   return (
     <div style={styles.page}>
       <div style={styles.card}>
-        <div style={styles.title}>Register</div>
-        {error && <div style={styles.error}>{error}</div>}
+        <div style={styles.title}>Forgot Password</div>
         {submitted ? (
-          <div style={{ ...styles.error, color: '#388e3c', background: '#e8f5e9' }}>
-            Registration successful! (demo only)
+          <div style={styles.success} aria-live="polite">
+            If an account with that email exists, a reset link has been sent.
           </div>
         ) : (
-          <form onSubmit={handleSubmit} style={{ width: '100%' }} aria-label="Register form">
+          <form onSubmit={handleSubmit} style={{ width: '100%' }} aria-label="Forgot password form">
             <div style={styles.formRow}>
               <label htmlFor="email" style={styles.label}>Email:</label>
               <input
@@ -138,43 +124,15 @@ const RegisterPage = () => {
                 autoComplete="username"
               />
             </div>
-            <div style={styles.formRow}>
-              <label htmlFor="password" style={styles.label}>Password:</label>
-              <input
-                id="password"
-                type="password"
-                value={password}
-                required
-                aria-required="true"
-                aria-label="Password"
-                onChange={e => setPassword(e.target.value)}
-                style={styles.input}
-                autoComplete="new-password"
-              />
-            </div>
-            <div style={styles.formRow}>
-              <label htmlFor="confirmPassword" style={styles.label}>Confirm Password:</label>
-              <input
-                id="confirmPassword"
-                type="password"
-                value={confirmPassword}
-                required
-                aria-required="true"
-                aria-label="Confirm password"
-                onChange={e => setConfirmPassword(e.target.value)}
-                style={styles.input}
-                autoComplete="new-password"
-              />
-            </div>
-            <button type="submit" style={styles.button} aria-label="Register">
-              Register
+            <button type="submit" style={styles.button} aria-label="Send reset link">
+              Send Reset Link
             </button>
           </form>
         )}
-        <Link to="/login" style={styles.link}>Already have an account? Login</Link>
+        <Link to="/login" style={styles.link}>Back to Login</Link>
       </div>
     </div>
   );
 };
 
-export default RegisterPage;
+export default ForgotPasswordPage; 

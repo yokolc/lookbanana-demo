@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import './LoginPage.css';
 
 const styles = {
   page: {
@@ -35,13 +36,27 @@ const styles = {
     letterSpacing: 1,
     fontFamily: 'var(--font-main)',
   },
-  input: {
+  formRow: {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: 18,
     width: '100%',
+  },
+  label: {
+    flex: '0 0 110px',
+    marginRight: 10,
+    fontWeight: 500,
+    color: 'var(--color-text)',
+    fontFamily: 'var(--font-main)',
+    fontSize: 15,
+    textAlign: 'right',
+  },
+  input: {
+    flex: 1,
     padding: 12,
     borderRadius: 'var(--radius)',
     border: '1.5px solid var(--color-border)',
     fontSize: 16,
-    marginBottom: 8,
     outline: 'none',
     transition: 'border 0.2s, box-shadow 0.2s',
     boxSizing: 'border-box',
@@ -51,13 +66,6 @@ const styles = {
   inputError: {
     border: '1.5px solid #e53935',
     background: '#fff6f6',
-  },
-  label: {
-    display: 'block',
-    marginBottom: 6,
-    fontWeight: 500,
-    color: 'var(--color-text)',
-    fontFamily: 'var(--font-main)',
   },
   button: {
     width: '100%',
@@ -114,22 +122,6 @@ const styles = {
     fontWeight: 500,
     fontSize: 15,
   },
-  passwordToggle: {
-    position: 'absolute',
-    right: 12,
-    top: '50%',
-    transform: 'translateY(-50%)',
-    background: 'none',
-    border: 'none',
-    cursor: 'pointer',
-    fontSize: 15,
-    color: 'var(--color-primary)',
-    padding: 0,
-  },
-  inputWrapper: {
-    position: 'relative',
-    width: '100%',
-  },
 };
 
 const LoginPage = () => {
@@ -138,7 +130,6 @@ const LoginPage = () => {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
   const [touched, setTouched] = useState({ email: false, password: false });
 
   const handleSubmit = (e) => {
@@ -171,54 +162,41 @@ const LoginPage = () => {
         ) : null}
         {error && <div style={styles.error} aria-live="assertive">{error}</div>}
         <form onSubmit={handleSubmit} style={{ width: '100%' }} aria-label="Login form" autoComplete="on">
-          <div style={{ marginBottom: 18 }}>
+          <div style={styles.formRow}>
             <label htmlFor="email" style={styles.label}>Email:</label>
-            <div style={styles.inputWrapper}>
-              <input
-                id="email"
-                type="email"
-                value={email}
-                required
-                aria-required="true"
-                aria-label="Email address"
-                onChange={e => setEmail(e.target.value)}
-                onBlur={() => handleBlur('email')}
-                style={{
-                  ...styles.input,
-                  ...(touched.email && !email ? styles.inputError : {}),
-                }}
-                autoComplete="username"
-              />
-            </div>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              required
+              aria-required="true"
+              aria-label="Email address"
+              onChange={e => setEmail(e.target.value)}
+              onBlur={() => handleBlur('email')}
+              style={{
+                ...styles.input,
+                ...(touched.email && !email ? styles.inputError : {}),
+              }}
+              autoComplete="username"
+            />
           </div>
-          <div style={{ marginBottom: 18 }}>
+          <div style={styles.formRow}>
             <label htmlFor="password" style={styles.label}>Password:</label>
-            <div style={styles.inputWrapper}>
-              <input
-                id="password"
-                type={showPassword ? 'text' : 'password'}
-                value={password}
-                required
-                aria-required="true"
-                aria-label="Password"
-                onChange={e => setPassword(e.target.value)}
-                onBlur={() => handleBlur('password')}
-                style={{
-                  ...styles.input,
-                  ...(touched.password && !password ? styles.inputError : {}),
-                }}
-                autoComplete="current-password"
-              />
-              <button
-                type="button"
-                style={styles.passwordToggle}
-                tabIndex={0}
-                aria-label={showPassword ? 'Hide password' : 'Show password'}
-                onClick={() => setShowPassword((v) => !v)}
-              >
-                {showPassword ? '🙈' : '👁️'}
-              </button>
-            </div>
+            <input
+              id="password"
+              type="password"
+              value={password}
+              required
+              aria-required="true"
+              aria-label="Password"
+              onChange={e => setPassword(e.target.value)}
+              onBlur={() => handleBlur('password')}
+              style={{
+                ...styles.input,
+                ...(touched.password && !password ? styles.inputError : {}),
+              }}
+              autoComplete="current-password"
+            />
           </div>
           <button
             type="submit"
@@ -233,7 +211,7 @@ const LoginPage = () => {
           </button>
         </form>
         <div style={styles.linkRow}>
-          <Link to="#" style={styles.link} tabIndex={0}>Forgot password?</Link>
+          <Link to="/forgot-password" style={styles.link} tabIndex={0}>Forgot password?</Link>
           <Link to="/register" style={styles.link} tabIndex={0}>Register</Link>
         </div>
       </div>
