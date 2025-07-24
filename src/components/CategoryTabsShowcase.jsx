@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProductCard from './ProductCard';
+import ProductCard from './ProductCard.jsx';
 import './CategoryTabsShowcase.css';
 
 const CATEGORIES = [

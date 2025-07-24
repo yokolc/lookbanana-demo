@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import ProductGrid from '../components/ProductGrid';
-import SortDropdown from '../components/SortDropdown';
-import Pagination from '../components/Pagination';
+import ProductGrid from '../components/ProductGrid.jsx';
+import SortDropdown from '../components/SortDropdown.jsx';
+import Pagination from '../components/Pagination.jsx';
 import products from '../data/products';
 import './ProductListPage.css';
 

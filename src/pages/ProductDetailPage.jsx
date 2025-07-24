@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import products from '../data/products';
+import { useCart } from '../context/CartContext.jsx';
 import './ProductDetailPage.css';
 
 const ProductDetailPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { addToCart } = useCart();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -34,7 +37,9 @@ const ProductDetailPage = () => {
       alert('Please select a size.');
       return;
     }
+    addToCart(product, quantity, selectedSize);
     alert(`Added ${quantity} ${product.name} to cart!`);
+    navigate('/cart');
   };
 
   const handleQuantityChange = (newQuantity) => {

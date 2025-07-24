@@ -4,72 +4,122 @@ const CartContext = createContext();
 
 const cartReducer = (state, action) => {
   switch (action.type) {
-    case 'ADD_TO_CART':
-      const existingItem = state.items.find(item => item.id === action.payload.id);
+    case 'ADD_ITEM':
+      const existingItem = state.items.find(
+        item => item.id === action.payload.id && item.size === action.payload.size
+      );
+      
       if (existingItem) {
         return {
           ...state,
-          items: state.items.map(item => 
-            item.id === action.payload.id 
-              ? {...item, quantity: item.quantity + 1}
+          items: state.items.map(item =>
+            item.id === action.payload.id && item.size === action.payload.size
+              ? { ...item, quantity: item.quantity + action.payload.quantity }
               : item
           )
         };
+      } else {
+        return {
+          ...state,
+          items: [...state.items, action.payload]
+        };
       }
-      return {
-        ...state,
-        items: [...state.items, {...action.payload, quantity: 1}]
-      };
-    
-    case 'REMOVE_FROM_CART':
-      return {
-        ...state,
-        items: state.items.filter(item => item.id !== action.payload)
-      };
-    
+
     case 'UPDATE_QUANTITY':
       return {
         ...state,
         items: state.items.map(item =>
-          item.id === action.payload.id
-            ? {...item, quantity: action.payload.quantity}
+          item.id === action.payload.id && item.size === action.payload.size
+            ? { ...item, quantity: action.payload.quantity }
             : item
         )
       };
-    
+
+    case 'REMOVE_ITEM':
+      return {
+        ...state,
+        items: state.items.filter(item =>
+          !(item.id === action.payload.id && item.size === action.payload.size)
+        )
+      };
+
+    case 'CLEAR_CART':
+      return {
+        ...state,
+        items: []
+      };
+
     default:
       return state;
   }
 };
 
 export const CartProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(cartReducer, { items: [] });
+  const [state, dispatch] = useReducer(cartReducer, {
+    items: []
+  });
 
-  const addToCart = (product) => {
-    dispatch({ type: 'ADD_TO_CART', payload: product });
-  };
-
-  const removeFromCart = (productId) => {
-    dispatch({ type: 'REMOVE_FROM_CART', payload: productId });
-  };
-
-  const updateQuantity = (productId, quantity) => {
-    dispatch({ 
-      type: 'UPDATE_QUANTITY', 
-      payload: { id: productId, quantity } 
+  const addToCart = (product, quantity = 1, size = null) => {
+    dispatch({
+      type: 'ADD_ITEM',
+      payload: {
+        id: product.id,
+        name: product.name,
+        price: product.isOnSale ? product.salePrice : product.price,
+        image: product.image,
+        quantity,
+        size
+      }
     });
   };
 
+  const updateQuantity = (id, size, quantity) => {
+    dispatch({
+      type: 'UPDATE_QUANTITY',
+      payload: { id, size, quantity }
+    });
+  };
+
+  const removeFromCart = (id, size) => {
+    dispatch({
+      type: 'REMOVE_ITEM',
+      payload: { id, size }
+    });
+  };
+
+  const clearCart = () => {
+    dispatch({ type: 'CLEAR_CART' });
+  };
+
+  const getCartTotal = () => {
+    return state.items.reduce((total, item) => total + (item.price * item.quantity), 0);
+  };
+
+  const getCartCount = () => {
+    return state.items.reduce((count, item) => count + item.quantity, 0);
+  };
+
+  const value = {
+    items: state.items,
+    addToCart,
+    updateQuantity,
+    removeFromCart,
+    clearCart,
+    getCartTotal,
+    getCartCount
+  };
+
   return (
-    <CartContext.Provider value={{ 
-      cart: state.items, 
-      addToCart, 
-      removeFromCart,
-      updateQuantity 
-    }}>
+    <CartContext.Provider value={value}>
       {children}
     </CartContext.Provider>
   );
 };
 
-export const useCart = () => useContext(CartContext);
+export const useCart = () => {
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error('useCart must be used within a CartProvider');
+  }
+  return context;
+};

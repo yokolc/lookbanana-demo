@@ -1,0 +1,271 @@
+.order-history-page {
+  min-height: 100vh;
+  background: var(--color-bg);
+  padding: 40px 0;
+}
+
+.order-history-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.order-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.order-history-header h1 {
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--color-text);
+  margin: 0;
+  font-family: var(--font-main);
+}
+
+.filter-select {
+  padding: 10px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  background: var(--color-card);
+  color: var(--color-text);
+  outline: none;
+  cursor: pointer;
+}
+
+.filter-select:focus {
+  border-color: var(--color-primary);
+}
+
+.no-orders {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.no-orders-icon {
+  font-size: 64px;
+  margin-bottom: 24px;
+}
+
+.no-orders h2 {
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--color-text);
+  margin: 0 0 16px 0;
+  font-family: var(--font-main);
+}
+
+.no-orders p {
+  color: var(--color-muted);
+  margin: 0 0 32px 0;
+  line-height: 1.6;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.order-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: box-shadow 0.2s;
+}
+
+.order-card:hover {
+  box-shadow: var(--shadow);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.order-info h3 {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-text);
+  margin: 0 0 8px 0;
+  font-family: var(--font-main);
+}
+
+.order-date {
+  color: var(--color-muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+.status-badge {
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.order-items {
+  margin-bottom: 20px;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.item-info h4 {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text);
+  margin: 0 0 4px 0;
+}
+
+.item-info p {
+  font-size: 14px;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.item-price {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.order-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.order-total {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  color: var(--color-text);
+}
+
+.total-amount {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.order-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.track-order-btn,
+.view-order-btn,
+.review-order-btn {
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.track-order-btn {
+  background: var(--color-primary);
+  color: white;
+}
+
+.track-order-btn:hover {
+  background: #1a5f7a;
+}
+
+.view-order-btn {
+  background: none;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.view-order-btn:hover {
+  background: var(--color-bg);
+  border-color: var(--color-primary);
+}
+
+.review-order-btn {
+  background: #38a169;
+  color: white;
+}
+
+.review-order-btn:hover {
+  background: #2f855a;
+}
+
+.loading-container {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-border);
+  border-top: 3px solid var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .order-history-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .order-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .order-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .order-actions {
+    justify-content: stretch;
+  }
+  
+  .track-order-btn,
+  .view-order-btn,
+  .review-order-btn {
+    flex: 1;
+    text-align: center;
+  }
+} 

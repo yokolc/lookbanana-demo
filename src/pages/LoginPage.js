@@ -37,22 +37,11 @@ const styles = {
     fontFamily: 'var(--font-main)',
   },
   formRow: {
-    display: 'flex',
-    alignItems: 'center',
     marginBottom: 18,
     width: '100%',
   },
-  label: {
-    flex: '0 0 110px',
-    marginRight: 10,
-    fontWeight: 500,
-    color: 'var(--color-text)',
-    fontFamily: 'var(--font-main)',
-    fontSize: 15,
-    textAlign: 'right',
-  },
   input: {
-    flex: 1,
+    width: '100%',
     padding: 12,
     borderRadius: 'var(--radius)',
     border: '1.5px solid var(--color-border)',
@@ -135,12 +124,19 @@ const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setTouched({ email: true, password: true });
+    
+    console.log('Email: ', email);
+    console.log('Password: ', password);
+    
     if (!email || !password) {
       setError('Please enter both email and password.');
       return;
     }
+    
     setError('');
     setLoading(true);
+    
+    // Simulate API call
     setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
@@ -155,19 +151,34 @@ const LoginPage = () => {
     <div style={styles.page}>
       <div style={styles.card}>
         {/* Logo or branding */}
-        <img src={require('../assets/images/logo.png')} alt="Logo" style={styles.logo} aria-label="Site logo" onError={e => {e.target.style.display='none';}} />
+        <img 
+          src={require('../assets/images/logo.png')} 
+          alt="Logo" 
+          style={styles.logo} 
+          aria-label="Site logo" 
+          onError={e => {e.target.style.display='none';}} 
+        />
         <div style={styles.title}>Login to Your Account</div>
-        {submitted ? (
-          <div style={styles.success} aria-live="polite">Login successful! (demo only)</div>
-        ) : null}
-        {error && <div style={styles.error} aria-live="assertive">{error}</div>}
+        
+        {submitted && (
+          <div style={styles.success} aria-live="polite">
+            Login successful! (demo only)
+          </div>
+        )}
+        
+        {error && (
+          <div style={styles.error} aria-live="assertive">
+            {error}
+          </div>
+        )}
+        
         <form onSubmit={handleSubmit} style={{ width: '100%' }} aria-label="Login form" autoComplete="on">
           <div style={styles.formRow}>
-            <label htmlFor="email" style={styles.label}>Email:</label>
             <input
               id="email"
               type="email"
               value={email}
+              placeholder="Email"
               required
               aria-required="true"
               aria-label="Email address"
@@ -180,12 +191,13 @@ const LoginPage = () => {
               autoComplete="username"
             />
           </div>
+          
           <div style={styles.formRow}>
-            <label htmlFor="password" style={styles.label}>Password:</label>
             <input
               id="password"
               type="password"
               value={password}
+              placeholder="Password"
               required
               aria-required="true"
               aria-label="Password"
@@ -198,6 +210,7 @@ const LoginPage = () => {
               autoComplete="current-password"
             />
           </div>
+          
           <button
             type="submit"
             style={{
@@ -210,9 +223,14 @@ const LoginPage = () => {
             {loading ? 'Logging in...' : 'Login'}
           </button>
         </form>
+        
         <div style={styles.linkRow}>
-          <Link to="/forgot-password" style={styles.link} tabIndex={0}>Forgot password?</Link>
-          <Link to="/register" style={styles.link} tabIndex={0}>Register</Link>
+          <Link to="/forgot-password" style={styles.link} tabIndex={0}>
+            Forgot password?
+          </Link>
+          <Link to="/register" style={styles.link} tabIndex={0}>
+            Register
+          </Link>
         </div>
       </div>
     </div>

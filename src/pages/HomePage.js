@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './HomePage.css';
 import products from '../data/products';
-import CategoryTabsShowcase from '../components/CategoryTabsShowcase';
+import CategoryTabsShowcase from '../components/CategoryTabsShowcase.jsx';
 
 const HomePage = () => {
   const [loading, setLoading] = useState(true);

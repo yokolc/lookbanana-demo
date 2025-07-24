@@ -1,6 +1,4 @@
-
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 const styles = {
   page: {
@@ -34,18 +32,10 @@ const styles = {
     alignItems: 'center',
     marginBottom: 18,
     width: '100%',
-  },
-  label: {
-    flex: '0 0 130px',
-    marginRight: 10,
-    fontWeight: 500,
-    color: 'var(--color-text)',
-    fontFamily: 'var(--font-main)',
-    fontSize: 15,
-    textAlign: 'right',
+    justifyContent: 'center',
   },
   input: {
-    flex: 1,
+    width: '100%',
     padding: 12,
     borderRadius: 'var(--radius)',
     border: '1.5px solid var(--color-border)',
@@ -123,14 +113,14 @@ const RegisterPage = () => {
             Registration successful! (demo only)
           </div>
         ) : (
-          <form onSubmit={handleSubmit} style={{ width: '100%' }} aria-label="Register form">
+          <div style={{ width: '100%' }}>
             <div style={styles.formRow}>
-              <label htmlFor="email" style={styles.label}>Email:</label>
               <input
                 id="email"
                 type="email"
                 value={email}
                 required
+                placeholder="Email"
                 aria-required="true"
                 aria-label="Email address"
                 onChange={e => setEmail(e.target.value)}
@@ -139,12 +129,12 @@ const RegisterPage = () => {
               />
             </div>
             <div style={styles.formRow}>
-              <label htmlFor="password" style={styles.label}>Password:</label>
               <input
                 id="password"
                 type="password"
                 value={password}
                 required
+                placeholder="Password"
                 aria-required="true"
                 aria-label="Password"
                 onChange={e => setPassword(e.target.value)}
@@ -153,12 +143,12 @@ const RegisterPage = () => {
               />
             </div>
             <div style={styles.formRow}>
-              <label htmlFor="confirmPassword" style={styles.label}>Confirm Password:</label>
               <input
                 id="confirmPassword"
                 type="password"
                 value={confirmPassword}
                 required
+                placeholder="Confirm Password"
                 aria-required="true"
                 aria-label="Confirm password"
                 onChange={e => setConfirmPassword(e.target.value)}
@@ -166,12 +156,12 @@ const RegisterPage = () => {
                 autoComplete="new-password"
               />
             </div>
-            <button type="submit" style={styles.button} aria-label="Register">
+            <button type="submit" style={styles.button} aria-label="Register" onClick={handleSubmit}>
               Register
             </button>
-          </form>
+          </div>
         )}
-        <Link to="/login" style={styles.link}>Already have an account? Login</Link>
+        <div style={styles.link}>Already have an account? Login</div>
       </div>
     </div>
   );

@@ -1,0 +1,26 @@
+.language-switcher {
+  position: relative;
+}
+
+.language-select {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  font-size: 14px;
+  color: var(--color-text);
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+  min-width: 120px;
+}
+
+.language-select:focus {
+  border-color: var(--color-primary);
+}
+
+.language-select option {
+  background: var(--color-card);
+  color: var(--color-text);
+  padding: 8px;
+} 

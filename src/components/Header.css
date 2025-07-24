@@ -1,61 +1,210 @@
+/* Header.css */
+
 .header {
-  background: var(--color-bg);
-  color: var(--color-text);
-  padding: 0 32px;
-  height: 64px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--color-border);
-  box-shadow: none;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
+  border-bottom: 1px solid #f0f0f0;
 }
 
+/* Logo Section */
 .header-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.75rem;
+  text-decoration: none;
 }
 
 .logo-img {
-  height: 32px;
-  width: 32px;
-  border-radius: 8px;
-  background: var(--color-bg-alt);
+  height: 40px;
+  width: auto;
   object-fit: contain;
-  box-shadow: none;
 }
 
 .logo-text {
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: var(--color-text);
-  font-family: var(--font-main);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  letter-spacing: -0.02em;
 }
 
+/* Navigation */
 .nav {
   display: flex;
-  gap: 22px;
+  align-items: center;
+  gap: 2rem;
 }
 
 .nav a {
-  color: var(--color-text);
   text-decoration: none;
-  font-size: 16px;
+  color: #4a4a4a;
   font-weight: 500;
-  padding: 6px 0;
-  border-bottom: 2px solid transparent;
-  border-radius: 0;
-  transition: border-bottom 0.18s, color 0.18s;
-  background: none;
+  font-size: 0.95rem;
+  position: relative;
+  transition: all 0.3s ease;
+  padding: 0.5rem 0;
 }
 
-.nav a:hover, .nav a:focus {
-  border-bottom: 2px solid var(--color-primary);
-  color: var(--color-primary);
-  background: none;
-  outline: none;
+/* Hover effects for text links */
+.nav a:not([aria-label]):hover {
+  color: #d4af37;
+}
+
+.nav a:not([aria-label])::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #d4af37;
+  transition: width 0.3s ease;
+}
+
+.nav a:not([aria-label]):hover::after {
+  width: 100%;
+}
+
+/* Icon links styling */
+.nav a[aria-label] {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  color: #4a4a4a;
+}
+
+.nav a[aria-label]:hover {
+  background-color: #f8f8f8;
+  color: #d4af37;
+  transform: translateY(-1px);
+}
+
+/* Icon styling */
+.nav a[aria-label] svg {
+  transition: all 0.3s ease;
+}
+
+.nav a[aria-label]:hover svg {
+  transform: scale(1.1);
+}
+
+/* Active state */
+.nav a.active {
+  color: #d4af37;
+}
+
+.nav a.active::after {
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .nav {
+    gap: 1rem;
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .nav a:not([aria-label]) {
+    font-size: 0.9rem;
+  }
+  
+  .logo-text {
+    font-size: 1.25rem;
+  }
+  
+  .logo-img {
+    height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0.75rem;
+  }
+  
+  .nav {
+    gap: 0.75rem;
+  }
+  
+  .nav a:not([aria-label]) {
+    font-size: 0.85rem;
+    padding: 0.25rem 0;
+  }
+  
+  .nav a[aria-label] {
+    padding: 0.25rem;
+  }
+  
+  .logo-text {
+    font-size: 1.1rem;
+  }
+}
+
+/* Animation for smooth loading */
+.header {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Focus states for accessibility */
+.nav a:focus {
+  outline: 2px solid #d4af37;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Additional styling for better visual hierarchy */
+.header-logo:hover .logo-text {
+  color: #d4af37;
+  transition: color 0.3s ease;
+}
+
+/* Cart badge (if you want to add item count later) */
+.nav a[aria-label="Cart"] {
+  position: relative;
+}
+
+.nav a[aria-label="Cart"]::before {
+  /* This can be used for cart item count badge */
+  content: attr(data-count);
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background-color: #ff4757;
+  color: white;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 0.7rem;
+  display: none; /* Show when cart has items */
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
 }
