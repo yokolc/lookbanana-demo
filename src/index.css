@@ -1,15 +1,16 @@
 :root {
-  --color-bg: #fff;
-  --color-bg-alt: #f7f7f7;
-  --color-card: #fff;
-  --color-border: #eae6e1;
-  --color-primary: #bfa980;
-  --color-accent: #e0cba8;
-  --color-text: #222;
-  --color-muted: #b0a99f;
-  --radius: 12px;
-  --shadow: 0 4px 24px rgba(191, 169, 128, 0.08);
-  --font-main: 'Montserrat', 'Noto Sans SC', 'Helvetica Neue', Arial, sans-serif;
+  /* Cash London-like palette */
+  --color-bg: #ffffff;
+  --color-bg-alt: #f6f6f6;
+  --color-card: #ffffff;
+  --color-border: #e5e5e5;
+  --color-primary: #111111;       /* near-black headers/cta */
+  --color-accent: #d32f2f;        /* sale red */
+  --color-text: #111111;
+  --color-muted: #666666;
+  --radius: 8px;
+  --shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+  --font-main: 'Inter', 'Helvetica Neue', Arial, sans-serif;
 }
 
 body {
@@ -19,4 +20,44 @@ body {
   letter-spacing: 0.02em;
   margin: 0;
   padding: 0;
+}
+
+/* Headings bold, compact spacing */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin: 0.5rem 0;
+}
+
+/* Buttons */
+.btn, button {
+  appearance: none;
+  border: 1px solid var(--color-text);
+  background: var(--color-text);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform .06s ease, opacity .2s ease;
+}
+.btn:hover, button:hover { opacity: .92; }
+.btn:active, button:active { transform: translateY(1px); }
+
+/* Sale badge / tags */
+.badge-sale {
+  background: var(--color-accent);
+  color: #fff;
+  padding: 6px 10px;
+  font-weight: 700;
+  font-size: 12px;
+  border-radius: 999px;
+}
+
+/* Cards */
+.card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }

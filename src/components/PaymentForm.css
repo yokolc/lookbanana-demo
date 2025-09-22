@@ -1,0 +1,217 @@
+.payment-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--color-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.payment-summary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  margin-bottom: 2rem;
+}
+
+.payment-summary h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.payment-amount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+}
+
+.payment-amount .amount {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-section {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+}
+
+.form-section h3 {
+  margin: 0 0 1rem 0;
+  color: var(--color-text);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.card-element-container {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e1e5e9;
+  transition: border-color 0.2s ease;
+}
+
+.card-element-container:focus-within {
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+.payment-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: var(--radius);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 50px;
+}
+
+.payment-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.payment-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.payment-error {
+  background: #fee;
+  color: #c53030;
+  padding: 1rem;
+  border-radius: var(--radius);
+  border: 1px solid #feb2b2;
+}
+
+.payment-error p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.payment-security {
+  text-align: center;
+  padding: 1rem;
+  background: #f0f9ff;
+  border-radius: var(--radius);
+  border: 1px solid #bae6fd;
+}
+
+.payment-security p {
+  margin: 0;
+  color: #0369a1;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.security-icon {
+  font-size: 1.1rem;
+}
+
+.payment-form-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  text-align: center;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+.spinner-small {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .payment-form-container {
+    padding: 1rem;
+    margin: 0 1rem;
+  }
+
+  .payment-summary {
+    padding: 1rem;
+  }
+
+  .payment-amount {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .form-section {
+    padding: 1rem;
+  }
+
+  .payment-button {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .payment-form-container {
+    background: var(--color-bg-dark, #1a1a1a);
+    color: var(--color-text-dark, #ffffff);
+  }
+
+  .form-section {
+    background: var(--color-bg-secondary-dark, #2a2a2a);
+    border-color: var(--color-border-dark, #404040);
+  }
+
+  .card-element-container {
+    background: var(--color-bg-dark, #1a1a1a);
+    border-color: var(--color-border-dark, #404040);
+  }
+
+  .payment-security {
+    background: var(--color-bg-secondary-dark, #2a2a2a);
+    border-color: var(--color-border-dark, #404040);
+  }
+
+  .payment-security p {
+    color: var(--color-text-dark, #ffffff);
+  }
+} 

@@ -38,14 +38,23 @@ const StripePayment = ({ amount, onSuccess, onError, loading, setLoading }) => {
       }
 
       // Send to your backend
-      const response = await fetch('/api/create-payment-intent', {
+      const response = await fetch('/api/payments/create-payment-intent', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
         body: JSON.stringify({
-          payment_method_id: paymentMethod.id,
-          amount: amount * 100, // Convert to cents
+          amount: amount,
+          currency: 'usd',
+          items: [
+            {
+              id: 1,
+              name: 'Test Product',
+              quantity: 1,
+              price: amount
+            }
+          ]
         }),
       });
 

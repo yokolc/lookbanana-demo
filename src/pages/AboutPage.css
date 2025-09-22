@@ -1,18 +1,260 @@
-.about-container {
-    max-width: 960px;
+/* About Page Styles - Aroz Jewelry Inspired */
+.about-page {
+    min-height: 100vh;
+    background: var(--color-bg);
+}
+
+/* Hero Section */
+.about-hero {
+    background: linear-gradient(135deg, var(--color-bg-alt) 0%, var(--color-card) 100%);
+    padding: 6rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.about-hero-content {
+    max-width: 800px;
     margin: 0 auto;
-    padding: 3rem 1rem;
-  }
-  
-  .about-heading {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: #333;
-  }
-  
-  .about-text {
+}
+
+.about-hero-title {
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    font-family: var(--font-main);
+    letter-spacing: -0.02em;
+}
+
+.about-hero-subtitle {
     font-size: 1.25rem;
-    color: #666;
+    color: var(--color-muted);
+    font-weight: 400;
     line-height: 1.6;
-  }
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Main Content */
+.about-main {
+    padding: 4rem 2rem;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Section Titles */
+.about-section-title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--color-text);
+    text-align: center;
+    margin-bottom: 3rem;
+    font-family: var(--font-main);
+    letter-spacing: -0.01em;
+}
+
+/* Company Introduction */
+.about-intro {
+    margin-bottom: 5rem;
+    padding: 3rem 0;
+}
+
+.about-intro-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-intro-text {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.about-intro-text:last-child {
+    margin-bottom: 0;
+}
+
+/* Values Grid */
+.about-values {
+    margin-bottom: 5rem;
+    padding: 3rem 0;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.value-card {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.value-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.value-card:hover::before {
+    transform: scaleX(1);
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.value-icon {
+    margin-bottom: 1.5rem;
+    color: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+.value-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    font-family: var(--font-main);
+}
+
+.value-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+    font-weight: 400;
+}
+
+/* Services Section */
+.about-services {
+    padding: 3rem 0;
+    background: var(--color-bg-alt);
+    border-radius: var(--radius);
+    margin-top: 3rem;
+}
+
+.services-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.service-item {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 1rem;
+}
+
+.service-item:last-child {
+    margin-bottom: 0;
+}
+
+.service-title {
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    font-family: var(--font-main);
+}
+
+.service-description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-hero {
+        padding: 4rem 1rem;
+    }
+    
+    .about-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .about-hero-subtitle {
+        font-size: 1.125rem;
+    }
+    
+    .about-main {
+        padding: 3rem 1rem;
+    }
+    
+    .about-section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .values-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    
+    .value-card {
+        padding: 2rem 1rem;
+    }
+    
+    .about-intro-text {
+        font-size: 1rem;
+    }
+    
+    .service-title {
+        font-size: 1.5rem;
+    }
+    
+    .service-description {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-hero-title {
+        font-size: 2rem;
+    }
+    
+    .about-hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .about-section-title {
+        font-size: 1.75rem;
+    }
+    
+    .value-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .value-title {
+        font-size: 1.25rem;
+    }
+}
   

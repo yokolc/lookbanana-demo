@@ -13,6 +13,7 @@ import CartPage from './pages/CartPage.js';
 import CheckoutPage from './pages/CheckoutPage.js';
 import OrderHistoryPage from './pages/OrderHistoryPage.js';
 import WishlistPage from './pages/WishlistPage.js';
+import PaymentHistory from './components/PaymentHistory.js';
 import Footer from './components/Footer.jsx';
 import Header from './components/Header2.js';
 import { CartProvider } from './context/CartContext.jsx';
@@ -38,6 +39,7 @@ function App() {
                   <Route path="/checkout" element={<CheckoutPage />} />
                   <Route path="/orders" element={<OrderHistoryPage />} />
                   <Route path="/wishlist" element={<WishlistPage />} />
+                  <Route path="/payment-history" element={<PaymentHistory />} />
               </Routes>
               <Footer />
             </BrowserRouter>
