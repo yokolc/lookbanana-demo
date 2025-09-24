@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/lookbanana-demo/static/css/main.a5e4bd4b.css",
-    "main.js": "/lookbanana-demo/static/js/main.ed525106.js",
-    "static/media/logo.png": "/lookbanana-demo/static/media/logo.8369774f10e3bee363c8.png",
-    "index.html": "/lookbanana-demo/index.html",
-    "main.a5e4bd4b.css.map": "/lookbanana-demo/static/css/main.a5e4bd4b.css.map",
-    "main.ed525106.js.map": "/lookbanana-demo/static/js/main.ed525106.js.map"
+    "main.css": "/static/css/main.a5e4bd4b.css",
+    "main.js": "/static/js/main.8dd365e6.js",
+    "static/media/logo.png": "/static/media/logo.8369774f10e3bee363c8.png",
+    "index.html": "/index.html",
+    "main.a5e4bd4b.css.map": "/static/css/main.a5e4bd4b.css.map",
+    "main.8dd365e6.js.map": "/static/js/main.8dd365e6.js.map"
   },
   "entrypoints": [
     "static/css/main.a5e4bd4b.css",
-    "static/js/main.ed525106.js"
+    "static/js/main.8dd365e6.js"
   ]
 }
