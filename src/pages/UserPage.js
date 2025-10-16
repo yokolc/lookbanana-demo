@@ -1,7 +1,7 @@
 import React from 'react';
 
 function UserPage() {
-  // 你可以接入真实用户信息（如从 context 或 API 获取）
+  // You can integrate real user information (e.g., from context or API)
   const user = {
     username: 'demo_user',
     email: 'demo@example.com'

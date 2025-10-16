@@ -280,7 +280,7 @@
   font-weight: 600;
 }
 
-/* 移除 .header-actions-vertical 样式，恢复 .header-actions 水平排列 */
+/* Remove .header-actions-vertical styles, restore .header-actions horizontal layout */
 .header-actions {
   display: flex;
   align-items: center;
