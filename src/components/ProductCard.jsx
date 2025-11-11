@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 import './ProductCard.css';
 
 const ProductCard = ({ product }) => {
   const { id, name, price, salePrice, image, isSoldOut, isOnSale } = product;
+  const { addToCart } = useCart();
+  const [isAdding, setIsAdding] = useState(false);
+
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    if (isSoldOut) return;
+    
+    setIsAdding(true);
+    addToCart(product);
+    
+    // Reset button state after animation
+    setTimeout(() => setIsAdding(false), 1000);
+  };
 
   return (
     <div className="product-card">
@@ -34,6 +50,14 @@ const ProductCard = ({ product }) => {
               <span className="current-price">${price.toFixed(2)}</span>
             )}
           </div>
+          <button 
+            className={`add-to-cart-btn ${isAdding ? 'adding' : ''} ${isSoldOut ? 'sold-out' : ''}`}
+            onClick={handleAddToCart}
+            disabled={isSoldOut}
+            aria-label={isSoldOut ? 'Out of stock' : 'Add to cart'}
+          >
+            {isAdding ? 'Added!' : isSoldOut ? 'Out of Stock' : 'Add to Cart'}
+          </button>
         </div>
       </Link>
     </div>
