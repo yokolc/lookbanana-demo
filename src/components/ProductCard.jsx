@@ -31,17 +31,16 @@ const ProductCard = ({ product }) => {
             className="product-image"
             onError={e => {e.target.style.display='none';}}
           />
-          {isSoldOut && (
-            <div className="sold-out-badge">Sold out</div>
-          )}
-          {isOnSale && !isSoldOut && (
-            <div className="sale-badge">On sale</div>
-          )}
+          {isSoldOut ? (
+            <div className="sold-out-badge">Sold Out</div>
+          ) : isOnSale ? (
+            <div className="sale-badge">Sale</div>
+          ) : null}
         </div>
-        <div className="product-info">
+        <div className="product-details">
           <h3 className="product-name">{name}</h3>
           <div className="product-price">
-            {isOnSale && !isSoldOut ? (
+            {isOnSale ? (
               <>
                 <span className="sale-price">${salePrice.toFixed(2)}</span>
                 <span className="original-price">${price.toFixed(2)}</span>
@@ -50,14 +49,16 @@ const ProductCard = ({ product }) => {
               <span className="current-price">${price.toFixed(2)}</span>
             )}
           </div>
-          <button 
-            className={`add-to-cart-btn ${isAdding ? 'adding' : ''} ${isSoldOut ? 'sold-out' : ''}`}
-            onClick={handleAddToCart}
-            disabled={isSoldOut}
-            aria-label={isSoldOut ? 'Out of stock' : 'Add to cart'}
-          >
-            {isAdding ? 'Added!' : isSoldOut ? 'Out of Stock' : 'Add to Cart'}
-          </button>
+          <div className="add-to-cart-container">
+            <button 
+              className={`add-to-cart-btn ${isAdding ? 'adding' : ''} ${isSoldOut ? 'sold-out' : ''}`}
+              onClick={handleAddToCart}
+              disabled={isSoldOut}
+              aria-label={isSoldOut ? 'Out of stock' : 'Add to cart'}
+            >
+              {isAdding ? 'Added!' : isSoldOut ? 'Sold Out' : 'Add to Cart'}
+            </button>
+          </div>
         </div>
       </Link>
     </div>

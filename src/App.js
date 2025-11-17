@@ -14,7 +14,6 @@ import CheckoutPage from './pages/CheckoutPage.js';
 import OrderHistoryPage from './pages/OrderHistoryPage.js';
 import WishlistPage from './pages/WishlistPage.js';
 import PaymentHistory from './components/PaymentHistory.js';
-import Footer from './components/Footer.jsx';
 import Header from './components/Header2.js';
 import { CartProvider } from './context/CartContext.jsx';
 import { LanguageProvider } from './context/LanguageContext.jsx';
@@ -41,7 +40,6 @@ function App() {
                   <Route path="/wishlist" element={<WishlistPage />} />
                   <Route path="/payment-history" element={<PaymentHistory />} />
               </Routes>
-              <Footer />
             </BrowserRouter>
           </CartProvider>
         </LanguageProvider>

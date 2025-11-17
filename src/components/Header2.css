@@ -1,25 +1,36 @@
 /* Header.css */
-
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
     background-color: #ffffff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
     z-index: 1000;
     border-bottom: 1px solid #f0f0f0;
-  }
-  
-  /* Logo Section */
-  .header-logo {
+    padding: 0 2rem;
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+/* Logo Section */
+.header-logo {
     display: flex;
     align-items: center;
     gap: 0.75rem;
     text-decoration: none;
-  }
+}
   
   .logo-img {
     height: 40px;
@@ -34,12 +45,41 @@
     letter-spacing: -0.02em;
   }
   
-  /* Navigation */
-  .nav {
+  /* Main Navigation */
+.main-nav {
     display: flex;
     align-items: center;
     gap: 2rem;
-  }
+}
+
+.nav-link {
+    color: #4a4a4a;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    position: relative;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #d4af37;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #d4af37;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
   
   .nav a {
     text-decoration: none;
@@ -241,18 +281,58 @@
   background: none;
   border: none;
   cursor: pointer;
+  padding: 0.5rem;
   display: flex;
   align-items: center;
-  padding: 0.5rem;
-  border-radius: 8px;
-  transition: background 0.2s, color 0.2s;
+  justify-content: center;
   color: #4a4a4a;
-  font-size: 1rem;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  position: relative;
 }
 
 .action-btn:hover {
-  background: #f8f8f8;
+  background-color: #f8f8f8;
   color: #d4af37;
+  transform: translateY(-1px);
+}
+
+/* Cart count badge */
+.cart-count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #d4af37;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  transform: translate(30%, -30%);
+}
+
+/* User profile button */
+.user-btn {
+  transition: transform 0.2s ease;
+}
+
+.user-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Search button */
+.search-btn {
+  transition: transform 0.2s ease;
+}
+
+.search-btn:hover {
+  transform: scale(1.1);
 }
 
 .icon-btn svg {

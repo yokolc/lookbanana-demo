@@ -36,32 +36,38 @@ const Header = () => {
     return (
         <header className="header">
             <div className="header-container">
-                {/* Logo at far left */}
-                <div className="header-logo">
-                    <Link to="/" className="logo-link">
-                        <img 
-                            src={require('../assets/images/logo.png')} 
-                            alt="LookBanana Logo" 
-                            className="logo-img" 
-                            onError={e => {e.target.style.display='none';}} 
-                        />
-                        <span className="logo-text">LookBanana</span>
-                    </Link>
+                <div className="header-left">
+                    {/* Logo */}
+                    <div className="header-logo">
+                        <Link to="/" className="logo-link">
+                            <img 
+                                src={require('../assets/images/logo.png')} 
+                                alt="LookBanana Logo" 
+                                className="logo-img" 
+                                onError={e => {e.target.style.display='none';}} 
+                            />
+                            <span className="logo-text">LookBanana</span>
+                        </Link>
+                    </div>
+                    
+                    {/* Navigation Links */}
+                    <nav className="main-nav">
+                        <Link to="/products" className="nav-link">Products</Link>
+                        <Link to="/about" className="nav-link">About Us</Link>
+                    </nav>
                 </div>
 
-                {/* Header Actions: all icons right-aligned horizontally */}
+                {/* Header Actions */}
                 <div className="header-actions">
-                    <Link to="/cart" className="action-btn login-btn" aria-label="Shopping Cart">
-                        Cart <CartIcon style={{ marginLeft: '6px' }} />
-                    </Link>
-                    <button className="action-btn login-btn" aria-label="Search">
+                    <button className="action-btn search-btn" aria-label="Search">
                         <SearchIcon />
                     </button>
-                    <Link to="/products" className="action-btn login-btn">Products</Link>
-                    <Link to="/about" className="action-btn login-btn">About Us</Link>
                     <Link to="/login" className="action-btn login-btn">Login</Link>
-                    <Link to="/user" className="action-btn login-btn" aria-label="User Account">
+                    <Link to="/user" className="action-btn user-btn" aria-label="User Account">
                         <UserIcon />
+                    </Link>
+                    <Link to="/cart" className="action-btn cart-btn" aria-label="Shopping Cart">
+                        <CartIcon />
                     </Link>
                 </div>
             </div>
