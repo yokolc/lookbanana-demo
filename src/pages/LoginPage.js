@@ -2,117 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './LoginPage.css';
 
-const styles = {
-  page: {
-    minHeight: '100vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    background: 'var(--color-bg-alt)',
-  },
-  card: {
-    width: 400,
-    padding: 36,
-    borderRadius: 'var(--radius)',
-    boxShadow: 'var(--shadow)',
-    background: 'var(--color-card)',
-    border: '1px solid var(--color-border)',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  logo: {
-    width: 60,
-    marginBottom: 12,
-    borderRadius: 8,
-    background: 'var(--color-bg-alt)',
-    border: '1px solid var(--color-border)',
-  },
-  title: {
-    marginBottom: 24,
-    fontWeight: 700,
-    fontSize: 24,
-    color: 'var(--color-text)',
-    letterSpacing: 1,
-    fontFamily: 'var(--font-main)',
-  },
-  formRow: {
-    marginBottom: 18,
-    width: '100%',
-  },
-  input: {
-    width: '100%',
-    padding: 12,
-    borderRadius: 'var(--radius)',
-    border: '1.5px solid var(--color-border)',
-    fontSize: 16,
-    outline: 'none',
-    transition: 'border 0.2s, box-shadow 0.2s',
-    boxSizing: 'border-box',
-    background: 'var(--color-bg)',
-    color: 'var(--color-text)',
-  },
-  inputError: {
-    border: '1.5px solid #e53935',
-    background: '#fff6f6',
-  },
-  button: {
-    width: '100%',
-    padding: '12px 0',
-    borderRadius: 'var(--radius)',
-    background: 'var(--color-primary)',
-    color: 'var(--color-bg)',
-    border: 'none',
-    fontWeight: 600,
-    fontSize: 17,
-    cursor: 'pointer',
-    marginTop: 8,
-    marginBottom: 8,
-    transition: 'background 0.2s, opacity 0.2s',
-    boxShadow: 'var(--shadow)',
-  },
-  buttonDisabled: {
-    background: 'var(--color-accent)',
-    cursor: 'not-allowed',
-    opacity: 0.7,
-  },
-  linkRow: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    width: '100%',
-    marginTop: 8,
-    fontSize: 14,
-  },
-  link: {
-    color: 'var(--color-primary)',
-    textDecoration: 'none',
-    fontWeight: 500,
-    transition: 'color 0.18s',
-  },
-  success: {
-    color: '#388e3c',
-    background: '#e8f5e9',
-    borderRadius: 4,
-    padding: '8px 0',
-    marginBottom: 16,
-    width: '100%',
-    textAlign: 'center',
-    fontWeight: 500,
-    fontSize: 15,
-  },
-  error: {
-    color: '#e53935',
-    background: '#fff6f6',
-    borderRadius: 4,
-    padding: '8px 0',
-    marginBottom: 12,
-    width: '100%',
-    textAlign: 'center',
-    fontWeight: 500,
-    fontSize: 15,
-  },
-};
-
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -148,88 +37,71 @@ const LoginPage = () => {
   };
 
   return (
-    <div style={styles.page}>
-      <div style={styles.card}>
-        {/* Logo or branding */}
-        <img 
-          src={require('../assets/images/logo.png')} 
-          alt="Logo" 
-          style={styles.logo} 
-          aria-label="Site logo" 
-          onError={e => {e.target.style.display='none';}} 
-        />
-        <div style={styles.title}>Login to Your Account</div>
-        
+    <div className="login-page-wm">
+      <div className="login-card">
+        <h1 className="login-title">LOGIN</h1>
+
         {submitted && (
-          <div style={styles.success} aria-live="polite">
+          <div className="login-status success" aria-live="polite">
             Login successful! (demo only)
           </div>
         )}
-        
+
         {error && (
-          <div style={styles.error} aria-live="assertive">
+          <div className="login-status error" aria-live="assertive">
             {error}
           </div>
         )}
-        
-        <form onSubmit={handleSubmit} style={{ width: '100%' }} aria-label="Login form" autoComplete="on">
-          <div style={styles.formRow}>
+
+        <form onSubmit={handleSubmit} className="login-form" aria-label="Login form" autoComplete="on">
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
             <input
               id="email"
               type="email"
               value={email}
-              placeholder="Email"
               required
               aria-required="true"
               aria-label="Email address"
               onChange={e => setEmail(e.target.value)}
               onBlur={() => handleBlur('email')}
-              style={{
-                ...styles.input,
-                ...(touched.email && !email ? styles.inputError : {}),
-              }}
+              className={`login-input ${touched.email && !email ? 'input-error' : ''}`}
               autoComplete="username"
             />
           </div>
-          
-          <div style={styles.formRow}>
+
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
             <input
               id="password"
               type="password"
               value={password}
-              placeholder="Password"
               required
               aria-required="true"
               aria-label="Password"
               onChange={e => setPassword(e.target.value)}
               onBlur={() => handleBlur('password')}
-              style={{
-                ...styles.input,
-                ...(touched.password && !password ? styles.inputError : {}),
-              }}
+              className={`login-input ${touched.password && !password ? 'input-error' : ''}`}
               autoComplete="current-password"
             />
           </div>
-          
+
           <button
             type="submit"
-            style={{
-              ...styles.button,
-              ...(loading ? styles.buttonDisabled : {}),
-            }}
+            className="login-submit"
             aria-label="Login button"
             disabled={loading}
           >
-            {loading ? 'Logging in...' : 'Login'}
+            {loading ? 'Signing in…' : 'SIGN IN'}
           </button>
         </form>
-        
-        <div style={styles.linkRow}>
-          <Link to="/forgot-password" style={styles.link} tabIndex={0}>
-            Forgot password?
+
+        <div className="login-links">
+          <Link to="/register" className="login-link">
+            Create account →
           </Link>
-          <Link to="/register" style={styles.link} tabIndex={0}>
-            Register
+          <Link to="/forgot-password" className="login-link">
+            Forgot your password? →
           </Link>
         </div>
       </div>

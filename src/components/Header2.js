@@ -62,8 +62,7 @@ const Header = () => {
                     <button className="action-btn search-btn" aria-label="Search">
                         <SearchIcon />
                     </button>
-                    <Link to="/login" className="action-btn login-btn">Login</Link>
-                    <Link to="/user" className="action-btn user-btn" aria-label="User Account">
+                    <Link to="/user" className="action-btn user-btn account-btn" aria-label="User Account">
                         <UserIcon />
                     </Link>
                     <Link to="/cart" className="action-btn cart-btn" aria-label="Shopping Cart">
