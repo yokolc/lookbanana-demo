@@ -8,13 +8,13 @@ const PaymentForm = ({ amount, onPaymentSuccess, onPaymentError, orderId, items 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [clientSecret, setClientSecret] = useState('');
-  const [paymentIntentId, setPaymentIntentId] = useState('');
 
   // Create payment intent when component mounts
   useEffect(() => {
     if (amount > 0) {
       createPaymentIntent();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [amount]);
 
   const createPaymentIntent = async () => {
@@ -48,7 +48,6 @@ const PaymentForm = ({ amount, onPaymentSuccess, onPaymentError, orderId, items 
       }
 
       setClientSecret(data.clientSecret);
-      setPaymentIntentId(data.paymentIntentId);
     } catch (err) {
       setError(err.message);
       onPaymentError?.(err.message);

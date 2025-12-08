@@ -38,8 +38,8 @@ const LoginPage = () => {
 
   return (
     <div className="login-page-wm">
-      <div className="login-card">
-        <h1 className="login-title">LOGIN</h1>
+      <div className="login-container">
+        <h1 className="login-title">Login</h1>
 
         {submitted && (
           <div className="login-status success" aria-live="polite">
@@ -55,12 +55,12 @@ const LoginPage = () => {
 
         <form onSubmit={handleSubmit} className="login-form" aria-label="Login form" autoComplete="on">
           <div className="form-group">
-            <label htmlFor="email">Email</label>
             <input
               id="email"
               type="email"
               value={email}
               required
+              placeholder="Email"
               aria-required="true"
               aria-label="Email address"
               onChange={e => setEmail(e.target.value)}
@@ -71,12 +71,12 @@ const LoginPage = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">Password</label>
             <input
               id="password"
               type="password"
               value={password}
               required
+              placeholder="Password"
               aria-required="true"
               aria-label="Password"
               onChange={e => setPassword(e.target.value)}
@@ -92,7 +92,7 @@ const LoginPage = () => {
             aria-label="Login button"
             disabled={loading}
           >
-            {loading ? 'Signing in…' : 'SIGN IN'}
+            {loading ? 'Signing in…' : 'Sign In'}
           </button>
         </form>
 

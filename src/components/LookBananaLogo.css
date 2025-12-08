@@ -1,0 +1,34 @@
+/* Import handwritten fonts - elegant, flowing, connected style like wolf & moon */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Allura&family=Playball&family=Qwigley&family=Alex+Brush&family=Dancing+Script:wght@400;600;700&display=swap');
+
+.lookbanana-logo {
+  display: inline-block;
+  vertical-align: middle;
+  user-select: none;
+}
+
+.logo-small {
+  width: 160px;
+  height: auto;
+}
+
+.logo-medium {
+  width: 220px;
+  height: auto;
+}
+
+.logo-large {
+  width: 300px;
+  height: auto;
+}
+
+.logo-text {
+  font-family: 'Great Vibes', 'Allura', 'Dancing Script', 'Playball', 'Qwigley', 'Alex Brush', cursive !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.2px !important;
+  fill: #1a1a1a !important;
+  stroke: none !important;
+  font-style: normal !important;
+  text-rendering: optimizeLegibility;
+}
+

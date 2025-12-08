@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { ArrowRight, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, ChevronRight, Star } from 'lucide-react';
 import './HomePage.css';
 import products from '../data/products';
 import ProductCard from '../components/ProductCard';
-import CategoryTabsShowcase from '../components/CategoryTabsShowcase';
+import LookBananaLogo from '../components/LookBananaLogo';
 
 
 // Sample featured collections data
@@ -12,7 +12,7 @@ const featuredCollections = [
   {
     id: 1,
     title: 'New Arrivals',
-    description: 'Discover our latest collection',
+    description: 'Explore our new collection',
     image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=800&fit=crop',
     link: '/shop/new-arrivals'
   },
@@ -32,10 +32,28 @@ const featuredCollections = [
   }
 ];
 
+// Customer testimonials
+const testimonials = [
+  {
+    id: 1,
+    text: "Can't recommend enough. Bought several products now from LookBanana. All beautiful designs, very high quality and lovely packaging. 10/10 would recommend. Will be buying in future.",
+    author: "Sarah M."
+  },
+  {
+    id: 2,
+    text: "This is my 6th, maybe 7th purchase from LookBanana and I just can't emphasize how amazing they are. The design, the quality and the care that goes into packing each piece is outstanding. Every. Single. Time!",
+    author: "Emma L."
+  },
+  {
+    id: 3,
+    text: "I can't stop buying LookBanana products, they are so cool! I love how they feel so light yet instantly make me feel put together.",
+    author: "Jessica K."
+  }
+];
+
 const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState('');
-  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -49,21 +67,6 @@ const HomePage = () => {
     e.preventDefault();
     alert('Thank you for subscribing to our newsletter!');
     setEmail('');
-  };
-
-  const handleSearch = (searchParams) => {
-    const queryParams = new URLSearchParams();
-    if (searchParams.keyword) queryParams.set('q', searchParams.keyword);
-    if (searchParams.minPrice) queryParams.set('minPrice', searchParams.minPrice);
-    if (searchParams.maxPrice) queryParams.set('maxPrice', searchParams.maxPrice);
-    if (searchParams.sort) queryParams.set('sort', searchParams.sort);
-    
-    navigate(`/products?${queryParams.toString()}`);
-  };
-
-  const handleFilterChange = (filters) => {
-    // Handle filter changes if needed
-    console.log('Filters changed:', filters);
   };
 
   if (loading) {
@@ -82,91 +85,108 @@ const HomePage = () => {
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-content">
-          <h1 className="hero-title">LookBanana</h1>
+          <div className="hero-logo">
+            <LookBananaLogo size="large" />
+          </div>
+          <p className="hero-tagline">ANYTHING BUT ORDINARY</p>
           <p className="hero-subtitle">
-            Curated collection of premium products, crafted with attention to detail
+            Playful products & accessories, designed to stand out.
+            <br />
+            <span className="hero-branding">Handcrafted with care, since 2024.</span>
           </p>
-          <Link to="/shop" className="shop-now-btn">
+          <Link to="/products" className="shop-now-btn">
             Shop Now <ArrowRight size={16} />
           </Link>
         </div>
       </section>
 
-      {/* Featured Collections */}
-      <section className="featured-collections">
-        <div className="section-header">
-          <h2>Shop by Category</h2>
-          <Link to="/shop" className="view-all">
-            View All <ChevronRight size={16} />
-          </Link>
-        </div>
-        <div className="collections-grid">
-          {featuredCollections.map(collection => (
-            <Link to={collection.link} key={collection.id} className="collection-card">
-              <div className="collection-image">
-                <img 
-                  src={collection.image} 
-                  alt={collection.title}
-                  onError={(e) => { e.target.style.display = 'none'; }}
-                />
-              </div>
-              <div className="collection-info">
-                <h3>{collection.title}</h3>
-                <p>{collection.description}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* Featured Products */}
-      <section className="featured-products">
-        <div className="section-header">
-          <h2>Featured Products</h2>
-          <Link to="/products" className="view-all">
-            View All <ChevronRight size={16} />
-          </Link>
-        </div>
-        <div className="products-grid">
-          {products.slice(0, 4).map(product => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      </section>
-
-      {/* Newsletter Banner */}
-      <section className="newsletter-banner">
+      {/* Quick Navigation Collections */}
+      <section className="quick-collections">
         <div className="container">
-          <div className="newsletter-content">
-            <span className="newsletter-text">
-              Free shipping on orders over $200 — Subscribe to our newsletter and receive 10% off your first order
-            </span>
+          <div className="collections-grid">
+            {featuredCollections.map(collection => (
+              <Link to={collection.link} key={collection.id} className="collection-card">
+                <div className="collection-image">
+                  <img 
+                    src={collection.image} 
+                    alt={collection.title}
+                    onError={(e) => { e.target.style.display = 'none'; }}
+                  />
+                </div>
+                <div className="collection-info">
+                  <h3>{collection.title}</h3>
+                  <p>{collection.description}</p>
+                  <span className="collection-link">SHOP →</span>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Category Tabs Showcase */}
-      <div className="container">
-        <CategoryTabsShowcase products={products} />
-      </div>
-
-      {/* Newsletter Section */}
-      <section className="newsletter-section">
+      {/* Most Popular Section */}
+      <section className="most-popular-section">
         <div className="container">
-          <div className="newsletter-form-container">
-            <h2>Stay Updated</h2>
-            <p>Subscribe to our newsletter for exclusive offers and new arrivals</p>
-            <form onSubmit={handleNewsletterSubmit} className="newsletter-form">
+          <div className="section-header">
+            <h2>MOST POPULAR</h2>
+            <Link to="/products" className="view-all">
+              View all <ChevronRight size={16} />
+            </Link>
+          </div>
+          <div className="products-grid">
+            {products.slice(0, 10).map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="testimonials-section">
+        <div className="container">
+          <h2 className="testimonials-title">LOVED BY YOU</h2>
+          <p className="testimonials-subtitle">Follow us on Instagram →</p>
+          <div className="testimonials-grid">
+            {testimonials.map(testimonial => (
+              <div key={testimonial.id} className="testimonial-card">
+                <div className="testimonial-stars">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={16} fill="#1a1a1a" />
+                  ))}
+                </div>
+                <blockquote className="testimonial-text">
+                  "{testimonial.text}"
+                </blockquote>
+                <p className="testimonial-author">— {testimonial.author}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Club Section */}
+      <section className="newsletter-club-section">
+        <div className="container">
+          <div className="newsletter-club-container">
+            <h2 className="newsletter-club-title">JOIN LOOKBANANA CLUB</h2>
+            <div className="newsletter-club-icon">✦</div>
+            <p className="newsletter-club-subtitle">Sign up for free & you'll get…</p>
+            <ul className="newsletter-club-benefits">
+              <li>✦ Early access to new collections</li>
+              <li>✦ Exclusive promotions</li>
+              <li>✦ Entered into our monthly $100 gift card prize draw</li>
+            </ul>
+            <form onSubmit={handleNewsletterSubmit} className="newsletter-club-form">
               <input
                 type="email"
-                placeholder="Enter your email address"
+                placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="newsletter-input"
+                className="newsletter-club-input"
               />
-              <button type="submit" className="newsletter-btn">
-                Subscribe
+              <button type="submit" className="newsletter-club-btn">
+                Subscribe →
               </button>
             </form>
           </div>

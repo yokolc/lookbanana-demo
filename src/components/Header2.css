@@ -28,22 +28,19 @@
 .header-logo {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
     text-decoration: none;
 }
-  
-  .logo-img {
-    height: 40px;
-    width: auto;
-    object-fit: contain;
-  }
-  
-  .logo-text {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #2c2c2c;
-    letter-spacing: -0.02em;
-  }
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.logo-link:hover {
+    opacity: 0.8;
+}
   
   /* Main Navigation */
 .main-nav {
@@ -370,14 +367,13 @@
 }
 
 .account-btn {
-  border: 1px solid #ededed;
-  border-radius: 999px;
-  padding: 0.45rem;
+  border: none;
+  padding: 0.5rem;
 }
 
 .account-btn svg {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
 }
 
 @media (max-width: 900px) {
